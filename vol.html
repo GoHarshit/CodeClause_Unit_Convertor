@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<title>Temperatue Convertor</title>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="heading">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="index.html">Length</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="temp.html">Temperature</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="area.html">Area</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="vol.html">Volume</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="weight.html">Weight</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="time.html">Time</a>
+            </li>
+          </ul>
+    </h1>
+    <div id="content">
+        <div class="content1">
+            <input value="1" type="number" class="content2" id="input">
+        </div>
+        <div class="content1">
+            <h1>=</h1>
+        </div>
+        <div class="content1">
+            <input type="number" class="content2" value="1000" id="result">
+        </div>
+    <div class="choose">
+        <div class="from">
+            <label for="">From:</label>
+            <select name="volume" id="inputType">
+                <option value="liter" id="liter" selected>Liter</opiton>
+                <option value="milliliter" id="milliliter">Milliliter</option>
+                <option value="cubicfoot" id="cubicfoot">Cubic Foot</opiton>
+                <option value="cubicinch" id="cubicinch">Cubic Inch</opiton>   
+                <option value="cubicmeter" id="cubicmeter">Cubic Meter</opiton> 
+                <option value="imperial" id="imperial">Imperial gallon</opiton>
+            </select>
+        </div>
+        
+        <div class="To">
+            <label for="">To:</label>
+            <select name="volume" id="resultType">
+                <option value="liter" id="liter" >Liter</opiton>
+                <option value="milliliter" id="milliliter" selected>Milliliter</option>
+                <option value="cubicfoot" id="cubicfoot">Cubic Foot</opiton>
+                <option value="cubicinch" id="cubicinch">Cubic Inch</opiton>   
+                <option value="cubicmeter" id="cubicmeter">Cubic Meter</opiton> 
+                <option value="imperial" id="imperial">Imperial gallon</opiton>
+                </select>
+        </div>
+    </div>
+        
+        
+        
+    </div>
+</div>
+
+<script>
+
+    
+var input=document.getElementById("input");
+    var result=document.getElementById("result");
+    var inputType=document.getElementById("inputType");
+    var resultType=document.getElementById("resultType");
+    var inputTypeValue,resultTypeValue;
+
+    window.onload=function(){
+        input.addEventListener("change",myResult);
+        input.addEventListener("keyup",myResult);
+        inputType.addEventListener("change",myResult);
+        resultType.addEventListener("change",myResult);
+
+        inputTypeValue=inputType.value;
+        resultTypeValue=resultType.value;
+
+        function myResult(){
+            inputTypeValue=inputType.value;
+            resultTypeValue=resultType.value;
+
+            if(inputTypeValue==="liter" && resultTypeValue==="liter"){
+                res=Number(input.value);
+                result.value=res;
+            }else if(inputTypeValue==="liter" && resultTypeValue==="millileter"){
+                let res=Number(input.value)*1000;
+                result.value=res;
+            }else if(inputTypeValue==="liter" && resultTypeValue==="cubicfoot"){
+                let res=input.value*0.0353146667;
+                result.value=res.toFixed(8);
+            }else if(inputTypeValue==="liter" && resultTypeValue==="cubicinch"){
+                let res=input.value*61.023744095;
+                result.value=res.toFixed(8);
+            }else if(inputTypeValue==="liter" && resultTypeValue==="cubicmeter"){
+                let res=input.value*0.001;
+                result.value=res.toFixed(3);
+            }else if(inputTypeValue==="liter" && resultTypeValue==="imperial"){
+                let res=input.value*0.2199692483;
+                result.value=res.toFixed(8);
+            }
+
+            if(inputTypeValue==="millileter" && resultTypeValue==="liter"){
+                res=Number(input.value)*0.001;
+                result.value=res;
+            }else if(inputTypeValue==="millileter" && resultTypeValue==="millileter"){
+                let res=Number(input.value);
+                result.value=res;
+            }else if(inputTypeValue==="millileter" && resultTypeValue==="cubicfoot"){
+                let res=input.value*0.0000353147;
+                result.value=res;
+            }else if(inputTypeValue==="millileter" && resultTypeValue==="cubicinch"){
+                let res=input.value*0.0610237441;
+                result.value=res;
+            }else if(inputTypeValue==="millileter" && resultTypeValue==="cubicmeter"){
+                let res=input.value*0.000001;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="millileter" && resultTypeValue==="imperial"){
+                let res=input.value*0.0002199692;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="cubicfoot" && resultTypeValue==="liter"){
+                res=Number(input.value)*28.316846592;
+                result.value=res;
+            }else if(inputTypeValue==="cubicfoot" && resultTypeValue==="millileter"){
+                let res=Number(input.value)*28316.846592;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="cubicfoot" && resultTypeValue==="cubicfoot"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="cubicfoot" && resultTypeValue==="cubicinch"){
+                let res=input.value*1728;
+                result.value=res;
+            }else if(inputTypeValue==="cubicfoot" && resultTypeValue==="cubicmeter"){
+                let res=input.value*0.0283168466;
+                result.value=res.toFixed(10);
+            }else if(inputTypeValue==="cubicfoot" && resultTypeValue==="imperial"){
+                let res=input.value*6.228835459;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="cubicinch" && resultTypeValue==="liter"){
+                res=Number(input.value)*0.016387064;
+                result.value=res;
+            }else if(inputTypeValue==="cubicinch" && resultTypeValue==="millileter"){
+                let res=Number(input.value)*16.387064;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="cubicinch" && resultTypeValue==="cubicfoot"){
+                let res=input.value*0.0005787037;
+                result.value=res;
+            }else if(inputTypeValue==="cubicinch" && resultTypeValue==="cubicinch"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="cubicinch" && resultTypeValue==="cubicmeter"){
+                let res=input.value*0.0000163871;
+                result.value=res;
+            }else if(inputTypeValue==="cubicinch" && resultTypeValue==="imperial"){
+                let res=input.value*0.0036046501;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="cubicmeter" && resultTypeValue==="liter"){
+                res=Number(input.value)*1000;
+                result.value=res;
+            }else if(inputTypeValue==="cubicmeter" && resultTypeValue==="millileter"){
+                let res=Number(input.value)*1000000;
+                result.value=res;
+            }else if(inputTypeValue==="cubicmeter" && resultTypeValue==="cubicfoot"){
+                let res=input.value*35.314666721;
+                result.value=res.toFixed(4);
+            }else if(inputTypeValue==="cubicmeter" && resultTypeValue==="cubicinch"){
+                let res=input.value*61023.744095;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="cubicmeter" && resultTypeValue==="cubicmeter"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="cubicmeter" && resultTypeValue==="imperial"){
+                let res=input.value*219.9692483;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="imperial" && resultTypeValue==="liter"){
+                res=Number(input.value)*4.54609;
+                result.value=res;
+            }else if(inputTypeValue==="imperial" && resultTypeValue==="millileter"){
+                let res=Number(input.value)*4546.09;
+                result.value=res;
+            }else if(inputTypeValue==="imperial" && resultTypeValue==="cubicfoot"){
+                let res=input.value*0.1605436532;
+                result.value=res;
+            }else if(inputTypeValue==="imperial" && resultTypeValue==="cubicinch"){
+                let res=input.value*277.41943279;
+                result.value=res;
+            }else if(inputTypeValue==="imperial" && resultTypeValue==="cubicmeter"){
+                let res=input.value*0.00454609;
+                result.value=res;
+            }else if(inputTypeValue==="imperial" && resultTypeValue==="imperial"){
+                let res=input.value;
+                result.value=res;
+            }
+
+            
+
+        }
+    }
+    
+
+</script>
+</body>
+</html>

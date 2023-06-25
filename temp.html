@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<title>Temperatue Convertor</title>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="heading">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Length</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="temp.html">Temperature</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="area.html">Area</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="vol.html">Volume</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="weight.html">Weight</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="time.html">Time</a>
+            </li>
+          </ul>
+    </h1>
+    <div id="content">
+        <div class="content1">
+            <input value="0" type="number" class="content2" id="input">
+        </div>
+        <div class="content1">
+            <h1>=</h1>
+        </div>
+        <div class="content1">
+            <input type="number" class="content2" value="273.15" id="result">
+        </div>
+    <div class="choose">
+        <div class="from">
+            <label for="">From:</label>
+            <select name="temperature" id="inputType">
+            <option value="celsius" id="celsius" selected>Celsius</opiton>
+            <option value="kelvin" id="kelvin">Kelvin</option>
+            <option value="fahrenheit" id="fahrenheit">Fahrenheit</opiton>
+            </select>
+        </div>
+        
+        <div class="To">
+            <label for="">To:</label>
+            <select name="temperature" id="resultType">
+                <option value="celsius" id="celsius">Celsius</opiton>
+                <option value="kelvin" id="kelvin" selected>Kelvin</option>
+                <option value="fahrenheit" id="fahrenheit">Fahrenheit</opiton>
+                </select>
+        </div>
+    </div>
+        
+        
+        
+    </div>
+</div>
+
+<script>
+
+    
+var input=document.getElementById("input");
+    var result=document.getElementById("result");
+    var inputType=document.getElementById("inputType");
+    var resultType=document.getElementById("resultType");
+    var inputTypeValue,resultTypeValue;
+
+    window.onload=function(){
+        input.addEventListener("change",myResult);
+        input.addEventListener("keyup",myResult);
+        inputType.addEventListener("change",myResult);
+        resultType.addEventListener("change",myResult);
+
+        inputTypeValue=inputType.value;
+        resultTypeValue=resultType.value;
+
+        function myResult(){
+            inputTypeValue=inputType.value;
+            resultTypeValue=resultType.value;
+
+            if(inputTypeValue==="celsius" && resultTypeValue==="kelvin"){
+                res=Number(input.value) +273.15;
+                result.value=res.toFixed(3);
+            }else if(inputTypeValue==="celsius" && resultTypeValue==="fahrenheit"){
+                let res=Number(input.value)*1.8+32;
+                result.value=res.toFixed(3);
+            }else if(inputTypeValue==="celsius" && resultTypeValue==="celsius"){
+                let res=input.value;
+                result.value=res.toFixed(3);
+            }
+
+            if(inputTypeValue==="kelvin" && resultTypeValue==="kelvin"){
+                let res=Number(input.value);
+                result.value=res.toFixed(3);
+            }else if(inputTypeValue==="kelvin" && resultTypeValue==="fahrenheit"){
+                let res=(Number(input.value)-273.15)*1.8+32;
+                result.value=res.toFixed(3);
+            }else if(inputTypeValue==="kelvin" && resultTypeValue==="celsius"){
+                let res=Number(input.value)-273.15;
+                result.value=res.toFixed(3);
+            }
+
+            if(inputTypeValue==="fahrenheit" && resultTypeValue==="kelvin"){
+               let res=(Number(input.value)-32)*(5/9)+273.15;
+                result.value=res.toFixed(3);
+            }else if(inputTypeValue==="fahrenheit" && resultTypeValue==="fahrenheit"){
+               let res=Number(input.value);
+                result.value=res.toFixed(3);
+            }else if(inputTypeValue==="fahrenheit" && resultTypeValue==="celsius"){
+               let res=(Number(input.value)-32)*(5/9);
+                result.value=res.toFixed(3);
+            }
+
+        }
+    }
+    
+
+</script>
+</body>
+</html>

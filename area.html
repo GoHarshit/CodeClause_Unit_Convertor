@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<title>Temperatue Convertor</title>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="heading">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="index.html">Length</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="temp.html">Temperature</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="area.html">Area</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="vol.html">Volume</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="weight.html">Weight</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="time.html">Time</a>
+            </li>
+          </ul>
+    </h1>
+    <div id="content">
+        <div class="content1">
+            <input value="1" type="number" class="content2" id="input">
+        </div>
+        <div class="content1">
+            <h1>=</h1>
+        </div>
+        <div class="content1">
+            <input type="number" class="content2" value="1000000" id="result">
+        </div>
+    <div class="choose">
+        <div class="from">
+            <label for="">From:</label>
+            <select name="area" id="inputType">
+            <option value="sqmeter" id="sqmeter">Square Meter</opiton>
+            <option value="sqkilometer" id="sqkilometer" selected>Square Kilommeter</option>
+            <option value="hectare" id="hectare">Hectare</opiton>
+            <option value="acre" id="acre">Acre</opiton>   
+            <option value="sqyard" id="sqyard">Square Yard</opiton> 
+            <option value="sqfoot" id="sqfoot">Square foot</opiton>
+            </select>
+        </div>
+        
+        <div class="To">
+            <label for="">To:</label>
+            <select name="area" id="resultType">
+                <option value="sqmeter" id="sqmeter" selected>Square Meter</opiton>
+                <option value="sqkilometer" id="sqkilometer">Square Kilommeter</option>
+                <option value="hectare" id="hectare">Hectare</opiton>
+                <option value="acre" id="acre">Acre</opiton>   
+                <option value="sqyard" id="sqyard">Square Yard</opiton> 
+                <option value="sqfoot" id="sqfoot">Square foot</opiton>
+                </select>
+        </div>
+    </div>
+        
+        
+        
+    </div>
+</div>
+
+<script>
+
+    
+var input=document.getElementById("input");
+    var result=document.getElementById("result");
+    var inputType=document.getElementById("inputType");
+    var resultType=document.getElementById("resultType");
+    var inputTypeValue,resultTypeValue;
+
+    window.onload=function(){
+        input.addEventListener("change",myResult);
+        input.addEventListener("keyup",myResult);
+        inputType.addEventListener("change",myResult);
+        resultType.addEventListener("change",myResult);
+
+        inputTypeValue=inputType.value;
+        resultTypeValue=resultType.value;
+
+        function myResult(){
+            inputTypeValue=inputType.value;
+            resultTypeValue=resultType.value;
+
+            if(inputTypeValue==="sqmeter" && resultTypeValue==="sqmeter"){
+                res=Number(input.value);
+                result.value=res;
+            }else if(inputTypeValue==="sqmeter" && resultTypeValue==="sqkilometer"){
+                let res=Number(input.value)*0.000001;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="sqmeter" && resultTypeValue==="hectare"){
+                let res=input.value/10000;
+                result.value=res.toFixed(4);
+            }else if(inputTypeValue==="sqmeter" && resultTypeValue==="acre"){
+                let res=input.value/4047;
+                result.value=res.toFixed(10);
+            }else if(inputTypeValue==="sqmeter" && resultTypeValue==="sqyard"){
+                let res=input.value*1.196;
+                result.value=res.toFixed(3);
+            }else if(inputTypeValue==="sqmeter" && resultTypeValue==="sqfoot"){
+                let res=input.value*10.764;
+                result.value=res.toFixed(3);
+            }
+
+            if(inputTypeValue==="sqkilometer" && resultTypeValue==="sqmeter"){
+                result.value=Number(input.value)*1000000;
+            }else if(inputTypeValue==="sqkilometer" && resultTypeValue==="sqkilometer"){
+                result.value=Number(input.value);
+            }else if(inputTypeValue==="sqkilometer" && resultTypeValue==="hectare"){
+                result.value=input.value*100;
+            }else if(inputTypeValue==="sqkilometer" && resultTypeValue==="acre"){
+                let res=input.value*247.1;
+                result.value=res.toFixed(2);
+            }else if(inputTypeValue==="sqkilometer" && resultTypeValue==="sqyard"){
+                let res=input.value*1195990.0463;
+                result.value=res.toFixed(4);
+            }else if(inputTypeValue==="sqkilometer" && resultTypeValue==="sqfoot"){
+                let res=input.value*10763910.417;
+                result.value=res.toFixed(3);
+            }
+
+            if(inputTypeValue==="hectare" && resultTypeValue==="sqmeter"){
+                result.value=Number(input.value) *10000
+            }else if(inputTypeValue==="hectare" && resultTypeValue==="sqkilometer"){
+                let res=Number(input.value)*0.01;
+                result.value=res.toFixed(3);
+            }else if(inputTypeValue==="hectare" && resultTypeValue==="hectare"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="hectare" && resultTypeValue==="acre"){
+                let res=input.value*2.4710538147;
+                result.value=res;
+            }else if(inputTypeValue==="hectare" && resultTypeValue==="sqyard"){
+                let res=input.value*11959.900463;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="hectare" && resultTypeValue==="sqfoot"){
+                let res=input.value*107639.10417;
+                result.value=res.toFixed(5);
+            }
+
+            if(inputTypeValue==="acre" && resultTypeValue==="sqmeter"){
+                res=Number(input.value)*4046.8564224;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="acre" && resultTypeValue==="sqkilometer"){
+                let res=Number(input.value)*0.0040468564;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="acre" && resultTypeValue==="hectare"){
+                let res=input.value*0.4046856422;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="acre" && resultTypeValue==="acre"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="acre" && resultTypeValue==="sqyard"){
+                let res=input.value*4840;
+                result.value=res;
+            }else if(inputTypeValue==="acre" && resultTypeValue==="sqfoot"){
+                let res=input.value*43560;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="sqyard" && resultTypeValue==="sqmeter"){
+                res=Number(input.value)*0.83612736;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="sqyard" && resultTypeValue==="sqkilometer"){
+                let res=Number(input.value)*8.3612736E-7;
+                result.value=res;
+            }else if(inputTypeValue==="sqyard" && resultTypeValue==="hectare"){
+                let res=input.value*0.0000836127;
+                result.value=res;
+            }else if(inputTypeValue==="sqyard" && resultTypeValue==="acre"){
+                let res=input.value*0.0002066116;
+                result.value=res;
+            }else if(inputTypeValue==="sqyard" && resultTypeValue==="sqyard"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="sqyard" && resultTypeValue==="sqfoot"){
+                let res=input.value*9;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="sqfoot" && resultTypeValue==="sqmeter"){
+                res=Number(input.value)*0.09290304;
+                result.value=res;
+            }else if(inputTypeValue==="sqfoot" && resultTypeValue==="sqkilometer"){
+                let res=Number(input.value)*9.290304E-8;
+                result.value=res;
+            }else if(inputTypeValue==="sqfoot" && resultTypeValue==="hectare"){
+                let res=input.value*0.0000092903;
+                result.value=res;
+            }else if(inputTypeValue==="sqfoot" && resultTypeValue==="acre"){
+                let res=input.value*0.0000229568;
+                result.value=res;
+            }else if(inputTypeValue==="sqfoot" && resultTypeValue==="sqyard"){
+                let res=input.value*0.1111111111;
+                result.value=res.toFixed(5);
+            }else if(inputTypeValue==="sqfoot" && resultTypeValue==="sqfoot"){
+                let res=input.value;
+                result.value=res;
+            }
+
+            
+
+        }
+    }
+    
+
+</script>
+</body>
+</html>

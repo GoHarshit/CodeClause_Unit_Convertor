@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<title>Temperatue Convertor</title>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="heading">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="index.html">Length</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="temp.html">Temperature</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="area.html">Area</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="vol.html">Volume</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="weight.html">Weight</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="time.html">Time</a>
+            </li>
+          </ul>
+    </h1>
+    <div id="content">
+        <div class="content1">
+            <input value="1" type="number" class="content2" id="input">
+        </div>
+        <div class="content1">
+            <h1>=</h1>
+        </div>
+        <div class="content1">
+            <input type="number" class="content2" value="1000" id="result">
+        </div>
+    <div class="choose">
+        <div class="from">
+            <label for="">From:</label>
+            <select name="time" id="inputType">
+                <option value="second" id="second" selected>Second</opiton>
+                <option value="millisecond" id="millisecond">Millisecond</option>
+                <option value="minute" id="minute">Minute</opiton>
+                <option value="hour" id="hour">Hour</opiton>   
+                <option value="day" id="day">Day</opiton> 
+                <option value="year" id="year">Year</opiton>
+            </select>
+        </div>
+        
+        <div class="To">
+            <label for="">To:</label>
+            <select name="weight" id="resultType">
+                <<option value="second" id="second">Second</opiton>
+                    <option value="millisecond" id="millisecond" selected>Millisecond</option>
+                    <option value="minute" id="minute">Minute</opiton>
+                    <option value="hour" id="hour">Hour</opiton>   
+                    <option value="day" id="day">Day</opiton> 
+                    <option value="year" id="year">Year</opiton>
+                </select>
+        </div>
+    </div>
+        
+        
+        
+    </div>
+</div>
+
+<script>
+
+    
+var input=document.getElementById("input");
+    var result=document.getElementById("result");
+    var inputType=document.getElementById("inputType");
+    var resultType=document.getElementById("resultType");
+    var inputTypeValue,resultTypeValue;
+
+    window.onload=function(){
+        input.addEventListener("keyup",myResult);
+        input.addEventListener("change",myResult);
+        inputType.addEventListener("change",myResult);
+        resultType.addEventListener("change",myResult);
+
+        inputTypeValue=inputType.value;
+        resultTypeValue=resultType.value;
+
+        function myResult(){
+            inputTypeValue=inputType.value;
+            resultTypeValue=resultType.value;
+
+            if(inputTypeValue==="second" && resultTypeValue==="second"){
+                res=Number(input.value);
+                result.value=res;
+            }else if(inputTypeValue==="second" && resultTypeValue==="millisecond"){
+                let res=Number(input.value)*1000;
+                result.value=res;
+            }else if(inputTypeValue==="second" && resultTypeValue==="minute"){
+                let res=input.value*0.0166666667;
+                result.value=res;
+            }else if(inputTypeValue==="second" && resultTypeValue==="hour"){
+                let res=input.value*0.0002777778;
+                result.value=res;
+            }else if(inputTypeValue==="second" && resultTypeValue==="day"){
+                let res=input.value*0.0000115741;
+                result.value=res;
+            }else if(inputTypeValue==="second" && resultTypeValue==="year"){
+                let res=input.value*3.168808781E-8;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="millisecond" && resultTypeValue==="second"){
+                res=Number(input.value)*0.001;
+                result.value=res;
+            }else if(inputTypeValue==="millisecond" && resultTypeValue==="millisecond"){
+                let res=Number(input.value);
+                result.value=res;
+            }else if(inputTypeValue==="millisecond" && resultTypeValue==="minute"){
+                let res=input.value*0.0000166667;
+                result.value=res;
+            }else if(inputTypeValue==="millisecond" && resultTypeValue==="hour"){
+                let res=input.value*2.777777777E-7;
+                result.value=res;
+            }else if(inputTypeValue==="millisecond" && resultTypeValue==="day"){
+                let res=input.value*1.157407407E-8;
+                result.value=res;
+            }else if(inputTypeValue==="millisecond" && resultTypeValue==="year"){
+                let res=input.value*3.168808781E-11;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="minute" && resultTypeValue==="second"){
+                res=Number(input.value)*60;
+                result.value=res;
+            }else if(inputTypeValue==="minute" && resultTypeValue==="millisecond"){
+                let res=Number(input.value)*60000;
+                result.value=res;
+            }else if(inputTypeValue==="minute" && resultTypeValue==="minute"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="minute" && resultTypeValue==="hour"){
+                let res=input.value*0.0166666667;
+                result.value=res;
+            }else if(inputTypeValue==="minute" && resultTypeValue==="day"){
+                let res=input.value*0.0006944444;
+                result.value=res;
+            }else if(inputTypeValue==="minute" && resultTypeValue==="year"){
+                let res=input.value*0.0000019013;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="hour" && resultTypeValue==="second"){
+                res=Number(input.value)*3600;
+                result.value=res;
+            }else if(inputTypeValue==="hour" && resultTypeValue==="millisecond"){
+                let res=Number(input.value)*3600000;
+                result.value=res;
+            }else if(inputTypeValue==="hour" && resultTypeValue==="minute"){
+                let res=input.value*60;
+                result.value=res;
+            }else if(inputTypeValue==="hour" && resultTypeValue==="hour"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="hour" && resultTypeValue==="day"){
+                let res=input.value*0.0416666667;
+                result.value=res;
+            }else if(inputTypeValue==="hour" && resultTypeValue==="year"){
+                let res=input.value*0.0001140771;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="day" && resultTypeValue==="second"){
+                res=Number(input.value)*86400;
+                result.value=res;
+            }else if(inputTypeValue==="day" && resultTypeValue==="millisecond"){
+                let res=Number(input.value)*86400000;
+                result.value=res;
+            }else if(inputTypeValue==="day" && resultTypeValue==="minute"){
+                let res=input.value*1440;
+                result.value=res;
+            }else if(inputTypeValue==="day" && resultTypeValue==="hour"){
+                let res=input.value*24;
+                result.value=res;
+            }else if(inputTypeValue==="day" && resultTypeValue==="day"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="day" && resultTypeValue==="year"){
+                let res=input.value*0.0027378508;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="year" && resultTypeValue==="second"){
+                res=Number(input.value)*31557600;
+                result.value=res;
+            }else if(inputTypeValue==="year" && resultTypeValue==="millisecond"){
+                let res=Number(input.value)*31557600000;
+                result.value=res;
+            }else if(inputTypeValue==="year" && resultTypeValue==="minute"){
+                let res=input.value*525960;
+                result.value=res;
+            }else if(inputTypeValue==="year" && resultTypeValue==="hour"){
+                let res=input.value*8766;
+                result.value=res;
+            }else if(inputTypeValue==="year" && resultTypeValue==="day"){
+                let res=input.value*365.25;
+                result.value=res;
+            }else if(inputTypeValue==="year" && resultTypeValue==="year"){
+                let res=input.value;
+                result.value=res;
+            }
+
+
+        }
+    }
+    
+
+</script>
+</body>
+</html>

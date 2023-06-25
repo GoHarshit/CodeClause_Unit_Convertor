@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<title>Unit Convertor</title>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="heading">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Length</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="temp.html">Temperature</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="area.html">Area</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="vol.html">Volume</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="weight.html">Weight</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="time.html">Time</a>
+            </li>
+          </ul>
+    </h1>
+    <div id="content">
+        <div class="content1">
+            <input value="1" type="number" class="content2" id="input">
+        </div>
+        <div class="content1">
+            <h1>=</h1>
+        </div>
+        <div class="content1">
+            <input type="number" class="content2" value="12" id="result">
+        </div>
+    <div class="choose">
+        <div class="from">
+            <label for="">From:</label>
+            <select name="length" id="inputType">
+            <option value="kilo-meter" id="kilo-meter">Kilo Meter</opiton>
+            <option value="feet" id="feet" selected>Feet</option>
+            <option value="inch" id="Inch">Inch</opiton>
+            <option value="centimeter" id="centimeter">Centimeter</opiton>
+            <option value="millimeter" id="millimeter">Millimeter</opiton>
+            <option value="meter" id="meter">Meter</opiton>
+            </select>
+        </div>
+        
+        <div class="To">
+            <label for="">To:</label>
+            <select name="length" id="resultType">
+                <option value="kilometer" id="kilometer">Kilometer</opiton>
+                <option value="feet" id="feet">Feet</option>
+                <option value="inch" id="Inch" selected>Inch</opiton>
+                <option value="centimeter" id="centimeter">Centimeter</opiton>
+                <option value="millimeter" id="millimeter">Millimeter</opiton>
+                <option value="meter" id="meter">Meter</opiton>
+                </select>
+        </div>
+    </div>
+        
+        
+        
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<title>Temperatue Convertor</title>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="heading">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Length</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="temp.html">Temperature</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="area.html">Area</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="vol.html">Volume</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="weight.html">Weight</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="time.html">Time</a>
+            </li>
+          </ul>
+    </h1>
+    <div id="content">
+        <div class="content1">
+            <input value="1" type="number" class="content2" id="input">
+        </div>
+        <div class="content1">
+            <h1>=</h1>
+        </div>
+        <div class="content1">
+            <input type="number" class="content2" value="1000" id="result">
+        </div>
+    <div class="choose">
+        <div class="from">
+            <label for="">From:</label>
+            <select name="weight" id="inputType">
+                <option value="kilogram" id="kilogram" selected>Kilogram</opiton>
+                <option value="gram" id="gram">Gram</option>
+                <option value="milligram" id="milligram">Milligram</opiton>
+                <option value="ton" id="ton">Metric Ton</opiton>   
+                <option value="pound" id="pound">Pound</opiton> 
+                <option value="ounce" id="ounce">Ounce</opiton>
+            </select>
+        </div>
+        
+        <div class="To">
+            <label for="">To:</label>
+            <select name="weight" id="resultType">
+                <option value="kilogram" id="kilogram">Kilogram</opiton>
+                <option value="gram" id="gram" selected>Gram</option>
+                <option value="milligram" id="milligram">Milligram</opiton>
+                <option value="ton" id="ton">Metric Ton</opiton>   
+                <option value="pound" id="pound">Pound</opiton> 
+                <option value="ounce" id="ounce">Ounce</opiton>
+                </select>
+        </div>
+    </div>
+        
+        
+        
+    </div>
+</div>
+
+<script>
+
+    
+var input=document.getElementById("input");
+    var result=document.getElementById("result");
+    var inputType=document.getElementById("inputType");
+    var resultType=document.getElementById("resultType");
+    var inputTypeValue,resultTypeValue;
+
+    window.onload=function(){
+        input.addEventListener("change",myResult);
+        input.addEventListener("keyup",myResult);
+        inputType.addEventListener("change",myResult);
+        resultType.addEventListener("change",myResult);
+
+        inputTypeValue=inputType.value;
+        resultTypeValue=resultType.value;
+
+        function myResult(){
+            inputTypeValue=inputType.value;
+            resultTypeValue=resultType.value;
+
+            if(inputTypeValue==="kilogram" && resultTypeValue==="kilogram"){
+                res=Number(input.value);
+                result.value=res;
+            }else if(inputTypeValue==="kilogram" && resultTypeValue==="gram"){
+                let res=Number(input.value)*1000;
+                result.value=res;
+            }else if(inputTypeValue==="kilogram" && resultTypeValue==="milligram"){
+                let res=input.value*1000000;
+                result.value=res;
+            }else if(inputTypeValue==="kilogram" && resultTypeValue==="ton"){
+                let res=input.value*0.001;
+                result.value=res;
+            }else if(inputTypeValue==="kilogram" && resultTypeValue==="pound"){
+                let res=input.value*2.2046244202;
+                result.value=res;
+            }else if(inputTypeValue==="kilogram" && resultTypeValue==="ounce"){
+                let res=input.value*35.273990723;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="gram" && resultTypeValue==="kilogram"){
+                res=Number(input.value)*0.001;
+                result.value=res;
+            }else if(inputTypeValue==="gram" && resultTypeValue==="gram"){
+                let res=Number(input.value);
+                result.value=res;
+            }else if(inputTypeValue==="gram" && resultTypeValue==="milligram"){
+                let res=input.value*1000;
+                result.value=res;
+            }else if(inputTypeValue==="gram" && resultTypeValue==="ton"){
+                let res=input.value*0.000001;
+                result.value=res.toFixed(6);
+            }else if(inputTypeValue==="gram" && resultTypeValue==="pound"){
+                let res=input.value*0.0022046244;
+                result.value=res;
+            }else if(inputTypeValue==="gram" && resultTypeValue==="ounce"){
+                let res=input.value*0.0352739907;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="milligram" && resultTypeValue==="kilogram"){
+                res=Number(input.value)*0.000001;
+                result.value=res;
+            }else if(inputTypeValue==="milligram" && resultTypeValue==="gram"){
+                let res=Number(input.value)*0.001;
+                result.value=res;
+            }else if(inputTypeValue==="milligram" && resultTypeValue==="milligram"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="milligram" && resultTypeValue==="ton"){
+                let res=input.value*9.999999999E-10;
+                result.value=res;
+            }else if(inputTypeValue==="milligram" && resultTypeValue==="pound"){
+                let res=input.value*0.0000022046;
+                result.value=res;
+            }else if(inputTypeValue==="milligram" && resultTypeValue==="ounce"){
+                let res=input.value*0.000035274;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="ton" && resultTypeValue==="kilogram"){
+                res=Number(input.value)*1000;
+                result.value=res;
+            }else if(inputTypeValue==="ton" && resultTypeValue==="gram"){
+                let res=Number(input.value)*1000000;
+                result.value=res;
+            }else if(inputTypeValue==="ton" && resultTypeValue==="milligram"){
+                let res=input.value*1000000000;
+                result.value=res;
+            }else if(inputTypeValue==="ton" && resultTypeValue==="ton"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="ton" && resultTypeValue==="pound"){
+                let res=input.value*2204.6244202;
+                result.value=res.toFixed(7);
+            }else if(inputTypeValue==="ton" && resultTypeValue==="ounce"){
+                let res=input.value*35273.990723;
+                result.value=res.toFixed(6);
+            }
+
+            if(inputTypeValue==="pound" && resultTypeValue==="kilogram"){
+                res=Number(input.value)*0.453592;
+                result.value=res;
+            }else if(inputTypeValue==="pound" && resultTypeValue==="gram"){
+                let res=Number(input.value)*453.592;
+                result.value=res;
+            }else if(inputTypeValue==="pound" && resultTypeValue==="milligram"){
+                let res=input.value*453592;
+                result.value=res;
+            }else if(inputTypeValue==="pound" && resultTypeValue==="ton"){
+                let res=input.value*0.000453592;
+                result.value=res;
+            }else if(inputTypeValue==="pound" && resultTypeValue==="pound"){
+                let res=input.value;
+                result.value=res;
+            }else if(inputTypeValue==="pound" && resultTypeValue==="ounce"){
+                let res=input.value*16;
+                result.value=res;
+            }
+
+            if(inputTypeValue==="ounce" && resultTypeValue==="kilogram"){
+                res=Number(input.value)*0.0283495;
+                result.value=res;
+            }else if(inputTypeValue==="ounce" && resultTypeValue==="gram"){
+                let res=Number(input.value)*28.3495;
+                result.value=res;
+            }else if(inputTypeValue==="ounce" && resultTypeValue==="milligram"){
+                let res=input.value*28349.5;
+                result.value=res;
+            }else if(inputTypeValue==="ounce" && resultTypeValue==="ton"){
+                let res=input.value*0.0000283495;
+                result.value=res;
+            }else if(inputTypeValue==="ounce" && resultTypeValue==="pound"){
+                let res=input.value*0.0625;
+                result.value=res.toFixed(4);
+            }else if(inputTypeValue==="ounce" && resultTypeValue==="ounce"){
+                let res=input.value;
+                result.value=res;
+            }
+
+
+        }
+    }
+    
+
+</script>
+</body>
+</html>
